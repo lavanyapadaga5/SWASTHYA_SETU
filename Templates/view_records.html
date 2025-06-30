@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>View Records | SwasthyaSetu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dash.css') }}">
+    <script src="{{ url_for('static', filename='animation.js') }}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard animate">
+            <h2>All Your Health Records</h2>
+            <a href="{{ url_for('dashboard') }}" class="add-btn">Back to Dashboard</a>
+            {% if records %}
+                <div class="records-list">
+                    {% for record in records %}
+                        <div class="record-card">
+                            <h4>{{ record.title }}</h4>
+                            <p>{{ record.description }}</p>
+                            <small>Added on: {{ record.date.strftime('%d %b %Y, %I:%M %p') if record.date else 'N/A' }}</small>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>No records found.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

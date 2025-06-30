@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Add Health Record | SwasthyaSetu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dash.css') }}">
+    <script src="{{ url_for('static', filename='animation.js') }}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard animate">
+            <h2>Add New Health Record</h2>
+            <form method="POST" action="{{ url_for('add_record') }}" id="recordForm">
+                <label for="title">Title:</label><br>
+                <input type="text" id="title" name="title" placeholder="Enter title" required><br><br>
+                
+                <label for="description">Description:</label><br>
+                <textarea id="description" name="description" rows="5" placeholder="Describe your record" required></textarea><br><br>
+                
+                <input type="submit" value="Add Record" class="add-btn">
+                <a href="{{ url_for('dashboard') }}" class="logout-btn" style="background:#636e72; margin-left: 15px;">Back to Dashboard</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>SwasthyaSetu | Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="login-box animate">
+            <h2>🩺 SwasthyaSetu</h2>
+            <p>Create your account</p>
+            <form method="POST">
+                <input type="text" name="username" placeholder="👤 Username" required />
+                <input type="password" name="password" placeholder="🔒 Password" required />
+                <button type="submit">Register</button>
+                <p class="link">Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+            </form>
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                  <div class="flash">
+                      {% for message in messages %}
+                          <p>{{ message }}</p>
+                      {% endfor %}
+                  </div>
+              {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</body>
+</html>

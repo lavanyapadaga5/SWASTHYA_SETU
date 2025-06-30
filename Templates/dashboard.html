@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>SwasthyaSetu | Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dash.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard animate">
+            <h2>Welcome, {{ session.username }}!</h2>
+            <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+            <h3>Your Health Records</h3>
+            <a href="{{ url_for('add_record') }}" class="add-btn">+ Add New Record</a>
+
+            {% if records %}
+                <div class="records-list">
+                    {% for record in records %}
+                        <div class="record-card">
+                            <h4>{{ record.title }}</h4>
+                            <p>{{ record.description }}</p>
+                            <small>Added on: {{ record.date.strftime('%d %b %Y, %I:%M %p') }}</small>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>No records yet. Please add your first health record.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
