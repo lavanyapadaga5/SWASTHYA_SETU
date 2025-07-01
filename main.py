@@ -9,7 +9,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///health.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-# Models
+# Database Models
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True)
@@ -82,8 +82,3 @@ def add_record():
 def logout():
     session.clear()
     return redirect(url_for('login'))
-
-if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
-    app.run(debug=True)
